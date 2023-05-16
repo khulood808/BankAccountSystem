@@ -3,10 +3,7 @@ package com.BankAccountSystem.BankAccountSystemByKhulood.Controller;
 import com.BankAccountSystem.BankAccountSystemByKhulood.Model.Customer;
 import com.BankAccountSystem.BankAccountSystemByKhulood.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +35,16 @@ public class CustomerController {
     public List<Customer> getAllInActiveCustomer() {
         List<Customer> inActiveCustomersList = customerService.getAllInActiveCustomer();
         return inActiveCustomersList;
+    }
+
+    @RequestMapping(value = "addCustomer", method = RequestMethod.POST)
+    public String addCustomer(@RequestBody Customer customer) {
+        try {
+            customerService.addCustomer(customer);
+            return "Customer added Successfully";
+        } catch (Exception e) {
+            return "Customer added Failed";
+        }
     }
 
 

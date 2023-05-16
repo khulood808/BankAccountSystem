@@ -29,5 +29,12 @@ public class CustomerService {
 
         return customerRepositry.getAllInActiveCustomer();
     }
-
+    public void addCustomer(Customer customer){
+        Customer customerInfo = new Customer();
+        customerInfo.setCustomerName(customer.getCustomerName());
+        customerInfo.setCustomerEmail(customer.getCustomerEmail());
+        customerInfo.setCustomerPhoneNumber(customer.getCustomerPhoneNumber());
+        customerInfo.setIsActive(customer.getIsActive());
+        customerRepositry.save(customerInfo);
+    }
 }
